@@ -8,7 +8,9 @@
 //   palindrome("abcdefg") === false
 
 function palindrome(str) {
-  let rev = str.split("").reduce((rev, char) => char + rev, "");
+  let rev = str.split("").reduce((rev, char) => {
+    return char + rev
+  }, "");
   if (rev === str) {
     return true;
   }
@@ -18,12 +20,26 @@ function palindrome(str) {
 function palindrome2(str) {
   let rev = str.split("").reduce((rev, char) => char + rev, "");
   return str === rev;
-}
+}                                   
 
 function palindrome3(str) {
   return str.split("").every((char, i) => {
     return char === str[str.length - i - 1];
   });
 }
-debugger;
+
+function palindrome4(str) {
+  const test = str.split('')
+  let result
+  test.forEach((e, i) => {
+    if (e === test[test.length - i - 1]) {
+      result = true
+    } else {
+      result = false
+    }
+  })
+  return result
+}
+
+console.log(palindrome4('aba')) 
 module.exports = { palindrome, palindrome3 };
